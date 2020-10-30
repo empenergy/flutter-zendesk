@@ -3,6 +3,7 @@
 #import <ChatSDK/ChatSDK.h>
 #import <MessagingSDK/MessagingSDK.h>
 #import <ChatProvidersSDK/ChatProvidersSDK.h>
+#import <CommonUISDK/CommonUISDK.h>
 
 #import "zendesk.pigeon.h"
 
@@ -69,6 +70,7 @@
     navVc.navigationBar.translucent = NO;
     if (navigationBarColor != nil) {
         navVc.navigationBar.barTintColor = ARGB_COLOR([navigationBarColor integerValue]);
+        [ZDKCommonTheme currentTheme].primaryColor = ARGB_COLOR([navigationBarColor integerValue]);
     }
     
     if (navigationTitleColor != nil) {
