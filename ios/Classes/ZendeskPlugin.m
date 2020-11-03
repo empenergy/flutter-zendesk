@@ -47,7 +47,11 @@
     messagingConfiguration.name = messagingName;
     
     ZDKChatConfiguration *chatConfiguration = [[ZDKChatConfiguration alloc] init];
-    
+    ZDKChatFormConfiguration *formConfiguration = [[ZDKChatFormConfiguration alloc] initWithName:ZDKFormFieldStatusOptional
+                                                                                           email:ZDKFormFieldStatusHidden
+                                                                                     phoneNumber:ZDKFormFieldStatusHidden
+                                                                                      department:ZDKFormFieldStatusHidden];
+    chatConfiguration.preChatFormConfiguration = formConfiguration;
     chatConfiguration.isPreChatFormEnabled = [[self null:input.isPreChatFormEnabled
                                                       or:@(chatConfiguration.isPreChatFormEnabled)] boolValue];
     chatConfiguration.isOfflineFormEnabled = [[self null:input.isOfflineFormEnabled

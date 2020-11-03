@@ -26,6 +26,7 @@ import zendesk.chat.ProfileProvider;
 import zendesk.chat.Providers;
 import zendesk.chat.VisitorInfo;
 import zendesk.chat.VisitorInfo.Builder;
+import zendesk.chat.PreChatFormFieldStatus;
 import zendesk.messaging.MessagingActivity;
 
 /** ZendeskPlugin */
@@ -110,7 +111,12 @@ public class ZendeskPlugin implements FlutterPlugin, ActivityAware, ChatApi, Pro
     }
 
     ChatConfiguration chatConfiguration =
-        ChatConfiguration.builder().withAgentAvailabilityEnabled(false).build();
+        ChatConfiguration.builder().withAgentAvailabilityEnabled(true)
+                .withPreChatFormEnabled(true)
+                .withNameFieldStatus(PreChatFormFieldStatus.OPTIONAL)
+                .withEmailFieldStatus(PreChatFormFieldStatus.HIDDEN)
+                .withPhoneFieldStatus(PreChatFormFieldStatus.HIDDEN)
+                .withDepartmentFieldStatus(PreChatFormFieldStatus.HIDDEN).build();
 
     MessagingActivity.builder().withEngines(ChatEngine.engine()).show(activity, chatConfiguration);
   }
